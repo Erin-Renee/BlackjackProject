@@ -7,11 +7,11 @@ public class Card {
   public Card(Rank rank, Suit suit) {
     this.rank = rank;
     this.suit = suit;
-  }
+  } //constructor
   
   public int getValue() {
     return rank.getValue();
-  }
+  } //getValue()
 
   @Override
   public int hashCode() {
@@ -20,7 +20,7 @@ public class Card {
     result = prime * result + ((rank == null) ? 0 : rank.hashCode());
     result = prime * result + ((suit == null) ? 0 : suit.hashCode());
     return result;
-  }
+  } //hashcode()
 
   @Override
   public boolean equals(Object obj) {
@@ -36,7 +36,7 @@ public class Card {
     if (suit != other.suit)
       return false;
     return true;
-  }
+  } //equals()
 
   @Override
   public String toString() {
@@ -45,6 +45,6 @@ public class Card {
     builder.append(" of ");
     builder.append(suit);
     return builder.toString();
-  }
+  } //toString
   
-}
+} //class

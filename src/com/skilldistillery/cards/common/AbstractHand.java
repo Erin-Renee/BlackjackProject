@@ -1,16 +1,35 @@
 package com.skilldistillery.cards.common;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class AbstractHand {
 	public abstract int getHandValue();
+
+	protected List<Card> listofcards = new ArrayList<>();
+
+	public void addCard(Card card) {
+		listofcards.add(card);
+	}
 	
-////private List<Card> createDeck(){
-////List<Card> deck = new ArrayList<>(52);
-////for(Suit s : Suit.values()) {
-////  for(Rank r : Rank.values()) {
-////    deck.add(new Card(r, s));
-////  }
-////}
-//return deck;
-//}
-//
+	public void clearHand() {
+		listofcards.removeAll(listofcards);
+	}//clearhand
+	
+	public Card getOneCard(int number) {
+		return listofcards.get(number);
+		
+	}
+
+	@Override
+	public String toString() {
+		String cardsinhand = "";
+		for (Card card : listofcards) {
+			cardsinhand += card.toString() + "\n";
+			System.err.println(card);
+			
+		}
+		return cardsinhand;
+	}
+	
 }
