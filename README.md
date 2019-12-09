@@ -1,5 +1,8 @@
 ## BlackJack Project
-For the BlackJack Project......
+For the BlackJack Project we I created 9 classes inside 2 packages. I separated
+ the classes specific to blackjack, and classes that could be used for other
+ games. The rank and suit class are enum classes, and the abstract hand is an
+ abstract class.
 
 ###Objectives
 
@@ -28,7 +31,7 @@ Macbook Pro
 
 
 #### Lessons Learned
-
+I got better at calling methods from other classes.
 
 
 ####thinkbox

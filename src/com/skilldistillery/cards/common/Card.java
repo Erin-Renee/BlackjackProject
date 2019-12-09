@@ -1,10 +1,13 @@
+//card type.
 package com.skilldistillery.cards.common;
 
 public class Card {
+	//fields
   private Rank rank;
   private Suit suit;
   
   public Card(Rank rank, Suit suit) {
+	  //constructors
     this.rank = rank;
     this.suit = suit;
   } //constructor

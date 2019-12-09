@@ -16,6 +16,15 @@ public class BlackJackDealer extends BlackjackPlayer {
 	//methods
 	
 
+	public boolean check17() {
+		boolean check = true;
+		if (dealershand.getHandValue() < 17 ) {
+			check = true;
+		}else { 
+			check = false;
+		}
+		return check;
+	}
 		
 
 	public Card passCardsToPlayer() {
