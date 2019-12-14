@@ -26,7 +26,7 @@ public abstract class AbstractHand {
 		String cardsinhand = "";
 		for (Card card : listofcards) {
 			cardsinhand += card.toString() + "\n";
-			//System.out.println(card);
+			//System.err.println(card);
 			
 		}
 		return cardsinhand;

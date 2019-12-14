@@ -3,10 +3,10 @@ package com.skilldistillery.cards.blackjack;
 import com.skilldistillery.cards.common.Card;
 import com.skilldistillery.cards.common.Deck;
 
-public class BlackJackDealer extends BlackjackPlayer {
+public class BlackJackDealer extends Player {
 	//fields
 	private Deck blackjackdealersdeck = new Deck();
-	private BlackJackHand dealershand = new BlackJackHand();
+	private Hand dealershand = new Hand();
 	
 	//constructor
 	public BlackJackDealer() {
@@ -39,11 +39,11 @@ public class BlackJackDealer extends BlackjackPlayer {
 		this.blackjackdealersdeck = blackjackdealersdeck;
 	}
 
-	public BlackJackHand getDealershand() {
+	public Hand getDealershand() {
 		return dealershand;
 	}
 
-	public void setDealershand(BlackJackHand dealershand) {
+	public void setDealershand(Hand dealershand) {
 		this.dealershand = dealershand;
 	}
 	

@@ -3,10 +3,10 @@ package com.skilldistillery.cards.blackjack;
 import com.skilldistillery.cards.common.AbstractHand;
 import com.skilldistillery.cards.common.Card;
 
-public class BlackJackHand extends AbstractHand {
+public class Hand extends AbstractHand {
 	
 	
-		public BlackJackHand() {
+		public Hand() {
 			
 		} //constructor
 		
