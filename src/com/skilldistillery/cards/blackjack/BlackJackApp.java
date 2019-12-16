@@ -42,7 +42,7 @@ public class BlackJackApp {
 					firstRound();
 					break;
 				case 2:
-					goodBye();
+					exit();
 					break;
 				default:
 					System.out.println("Please choose one of the menu options (1 or 2)");
@@ -65,7 +65,7 @@ public class BlackJackApp {
 		player.addCardFromDealer(dealer.passCardsToPlayer());
 		System.out.println("your first card is: " + player.getBjh());
 
-		dealer.addCardFromDealer(dealer.passCardsToPlayer());
+		dealer.dealergetcard(dealer.passCardsToPlayer());
 		System.out.println("the dealer first card is: " + dealer.getDealershand());
 
 		player.addCardFromDealer(dealer.passCardsToPlayer());
@@ -73,9 +73,9 @@ public class BlackJackApp {
 		playersHandValue();
 
 		System.out.println("the dealer is dealt a second card face down. ");
-		dealer.addCardFromDealer(dealer.passCardsToPlayer());
+		dealer.dealergetcard(dealer.passCardsToPlayer());
 
-		if (!player.getBjh().isBlackJack() || !dealer.getDealershand().isBlackJack()) {
+		if (!player.getBjh().isBlackJack() && !dealer.getDealershand().isBlackJack()) {
 
 			playersTurn();
 
@@ -91,24 +91,39 @@ public class BlackJackApp {
 	public void playersTurn() {
 		int playerchoice = 100;
 
-		while (!player.getBjh().isBust() || !dealer.getDealershand().isBust()) {
-			System.out.println("1: Hit, 2: Pass, 3: Quit");
-			playerchoice = kb.nextInt();
+//		while (!player.getBjh().isBust() && !dealer.getDealershand().isBust()&& !player.getBjh().is21() && !dealer.getDealershand().is21()) {
+//			do {
+		System.out.println("1: Hit, 2: Pass, 3: Quit");
+		playerchoice = kb.nextInt();
+		switch (playerchoice) {
+		case 1:
+			System.out.println("The dealer passes a card to the player");
+			player.addCardFromDealer(dealer.passCardsToPlayer());
+			System.out.println("your hand; " + player.getBjh());
+			playersHandValue();
+			checkPlayer();
+			break;
+		case 2:
+			dealerTurn();
+			checkDealer();
+			break;
+		case 3:
+			exit();
+			break;
+		default:
+			System.out.println("Error");
+		}
+	}
 
-			if (playerchoice == 1) {
-				System.out.println("The dealer passes a card to the player");
-				player.addCardFromDealer(dealer.passCardsToPlayer());
-				System.out.println("your hand; " + player.getBjh());
-				playersHandValue();
-			} else if (playerchoice == 2) {
-				dealerTurn();
-			} else {
-				goodBye();
+	public void checkPlayer() {
+		if (player.getBjh().isBust() || player.getBjh().is21()) {
+			whoWon();
+		}
+	}
 
-			}
-			if (player.getBjh().isBust() || dealer.getDealershand().isBust()) {
-				whoWon();
-			}
+	public void checkDealer() {
+		if (dealer.getDealershand().isBust() || dealer.getDealershand().is21()) {
+			whoWon();
 		}
 	}
 
@@ -124,30 +139,39 @@ public class BlackJackApp {
 	}
 
 	public void dealerTurn() {
-			if (dealer.check17()) {
-				System.out.println("dealer hits");
-				dealer.addCardFromDealer(dealer.passCardsToPlayer());
-				System.out.println("Dealers hand:  " + dealer.getDealershand());
-				dealersHandValue();
-			}
-			if (!dealer.check17()) {
-				System.out.println("dealer stays");
+		while (!dealer.getDealershand().isBust() && (!(dealer.getDealershand().getHandValue() == 21))) {
+			do {
+				if (dealer.check17() && !dealer.getDealershand().isBust()) {
+					System.out.println("dealer hits");
 
-				dealersHandValue();
-				anotherRound();
-			}
-			if (dealer.getDealershand().isBust()) {
-				whoWon();
-			}
+					dealer.dealergetcard(dealer.passCardsToPlayer());
+
+					System.out.println("Dealers hand:  " + dealer.getDealershand());
+					dealersHandValue();
+				}
+				if (!dealer.check17() && !dealer.getDealershand().isBust()) {
+					System.out.println("dealer stays");
+					dealersHandValue();
+					anotherRound();
+				}
+			} while (dealer.getDealershand().isBust() || (dealer.getDealershand().getHandValue() == 21));
+			whoWon();
+
 		}
-		
-	
+	}
 
 	public void anotherRound() {
 		System.out.println("what would you like to do?");
 		playersTurn();
 
 	}
+
+//	public void tie() {
+//		if (dealer.getDealershand().getHandValue() == player.getBjh().getHandValue()) {
+//			System.out.println("You and the dealer tied.");
+//			goodBye();
+//		}
+//	}
 
 	public void whoWon() {
 
@@ -167,6 +191,10 @@ public class BlackJackApp {
 			System.out.println("DEALER WON, You lost this round");
 			goodBye();
 		}
+		if (dealer.getDealershand().getHandValue() == player.getBjh().getHandValue()) {
+			System.out.println("You and the dealer tied.");
+			goodBye();
+		}
 
 	}
 
@@ -180,4 +208,8 @@ public class BlackJackApp {
 
 	}
 
+	public void exit() {
+		System.out.println("goodbye");
+		System.exit(0);
+	}
 } // class

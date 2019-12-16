@@ -39,11 +39,18 @@ public class Hand extends AbstractHand {
 		}else {
 			return false;
 		}
-		
-	
-	
-	
 	} //isBust()
+		public boolean is21() {
+			if (this.getHandValue() == 21) {
+				
+
+				return true;
+			}else {
+				return false;
+			}
+	
+		}
+	
 	
 }  //AbstractHand() class
 

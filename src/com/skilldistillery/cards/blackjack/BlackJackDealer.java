@@ -25,7 +25,9 @@ public class BlackJackDealer extends Player {
 		}
 		return check;
 	}
-		
+		public void dealergetcard(Card card) {
+			dealershand.addCard(card);
+		}
 
 	public Card passCardsToPlayer() {
 		return this.blackjackdealersdeck.dealCard();
