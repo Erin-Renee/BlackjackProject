@@ -20,6 +20,15 @@ public abstract class AbstractHand {
 		return listofcards.get(number);
 		
 	}
+	
+	public boolean isBlackJack() {
+		if (this.getHandValue() == 21) {
+			System.out.println("BLACKJACK!!!!");
+			return true;
+		}else {
+			return false;
+		}
+		} //sBlackJack()
 
 	@Override
 	public String toString() {

@@ -19,8 +19,8 @@ public class Deck {
 				deck.add(new Card(r, s));
 			}
 		}
-		Collections.shuffle(deck);
-		System.out.println("Shuffling deck...");
+		//Collections.shuffle(deck);
+		//System.out.println("Shuffling deck...");
 		return deck;
 	}
 
@@ -28,10 +28,10 @@ public class Deck {
 		return cards.size();
 	}
 
-//	public void shuffle() {
-//		System.out.println("shuffling deck");
-//		Collections.shuffle(cards);
-//	}
+	public void shuffle() {
+		System.out.println("shuffling deck");
+		Collections.shuffle(cards);
+	}
 
 	public Card dealCard() {
 		

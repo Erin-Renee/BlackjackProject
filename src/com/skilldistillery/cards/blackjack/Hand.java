@@ -21,9 +21,10 @@ public class Hand extends AbstractHand {
 		
 	} //getHandValue()
 	
+	@Override
 	public boolean isBlackJack() {
 		if (this.getHandValue() == 21) {
-			System.out.println("BLACKJACK!!!!");
+			
 			return true;
 		}else {
 			return false;
@@ -32,7 +33,8 @@ public class Hand extends AbstractHand {
 	
 	public boolean isBust() {
 		if (this.getHandValue() > 21) {
-			System.out.println("Bust!");
+			
+
 			return true;
 		}else {
 			return false;
